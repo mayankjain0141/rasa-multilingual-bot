@@ -11,6 +11,10 @@ COPY ./requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
+ADD . /app/
+RUN chmod +x /app/start_services.sh
+CMD /app/start_services.sh
+
 # Don't use terminal buffering, print all to stdout / err right away
 ENV PYTHONUNBUFFERED 1
 
